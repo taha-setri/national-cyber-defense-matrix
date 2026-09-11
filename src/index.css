@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --neon-red: #ff2a4d;
+    --neon-red-glow: rgba(255, 42, 77, 0.6);
+    --neon-green: #00ff66;
+    --neon-green-glow: rgba(0, 255, 102, 0.6);
+    --morocco-red: #c1272d;
+    --morocco-green: #006233;
+    --cyber-dark: #04070b;
+    --card-bg: rgba(10, 16, 24, 0.75);
+    --card-border: rgba(255, 42, 77, 0.2);
+  }
+
+  body {
+    background-color: var(--cyber-dark);
+    color: #e2e8f0;
+    overflow-x: hidden;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+/* Custom scrollbar for cyber console */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(4, 7, 11, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 102, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 102, 0.6);
+}
+
+/* Glassmorphism card styles */
+.cyber-card {
+  background: linear-gradient(135deg, rgba(16, 24, 38, 0.75) 0%, rgba(8, 12, 20, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-card:hover {
+  border-color: rgba(255, 42, 77, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(255, 42, 77, 0.15), inset 0 0 15px rgba(255, 42, 77, 0.05);
+}
+
+.cyber-card-green:hover {
+  border-color: rgba(0, 255, 102, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(0, 255, 102, 0.15), inset 0 0 15px rgba(0, 255, 102, 0.05);
+}
+
+/* Neon Glow utilities */
+.glow-text-red {
+  color: #ff2a4d;
+  text-shadow: 0 0 10px rgba(255, 42, 77, 0.8), 0 0 20px rgba(255, 42, 77, 0.4);
+}
+
+.glow-text-green {
+  color: #00ff66;
+  text-shadow: 0 0 10px rgba(0, 255, 102, 0.8), 0 0 20px rgba(0, 255, 102, 0.4);
+}
+
+.glow-box-red {
+  box-shadow: 0 0 15px rgba(255, 42, 77, 0.5), inset 0 0 15px rgba(255, 42, 77, 0.2);
+}
+
+.glow-box-green {
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.5), inset 0 0 15px rgba(0, 255, 102, 0.2);
+}
+
+/* Animations */
+@keyframes pulseGlowRed {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(255, 42, 77, 0.6), 0 0 18px rgba(255, 42, 77, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 16px rgba(255, 42, 77, 1), 0 0 32px rgba(255, 42, 77, 0.7);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pulseGlowGreen {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.6), 0 0 18px rgba(0, 255, 102, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 16px rgba(0, 255, 102, 1), 0 0 32px rgba(0, 255, 102, 0.7);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes blinkLive {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #ff2a4d;
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 2px #ff2a4d;
+  }
+}
+
+@keyframes blinkLiveGreen {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 12px #00ff66, 0 0 4px #00ff66;
+  }
+  50% {
+    opacity: 0.25;
+    box-shadow: 0 0 2px #00ff66;
+  }
+}
+
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes flagFloat {
+  0%, 100% {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.03) translateY(-6px) rotate(0.5deg);
+    opacity: 0.32;
+  }
+}
+
+@keyframes starSpinSlow {
+  0% {
+    filter: drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 45px rgba(0, 255, 102, 0.85)) drop-shadow(0 0 15px rgba(255, 42, 77, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(0, 255, 102, 0.4));
+  }
+}
+
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@keyframes glitchFlicker {
+  0% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  92% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  93% {
+    transform: translate(-3px, 1px);
+    opacity: 0.95;
+    filter: drop-shadow(-3px 0 #ff2a4d) drop-shadow(3px 0 #00ff66);
+  }
+  95% {
+    transform: translate(3px, -2px);
+    opacity: 0.92;
+    filter: drop-shadow(3px 0 #ff2a4d) drop-shadow(-3px 0 #00ff66);
+  }
+  97% {
+    transform: translate(-2px, 2px);
+    opacity: 0.96;
+  }
+  98% {
+    transform: translate(0);
+    opacity: 1;
+    filter: none;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+    filter: none;
+  }
+}
+
+.animate-draw-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawLine 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-soft {
+  animation: softPulse 2.8s infinite ease-in-out;
+}
+
+.animate-flag-float {
+  animation: flagFloat 12s infinite ease-in-out;
+}
+
+.animate-star-glow {
+  animation: starSpinSlow 6s infinite ease-in-out;
+}
+
+.animate-pulse-red {
+  animation: pulseGlowRed 2.4s infinite ease-in-out;
+}
+
+.animate-pulse-green {
+  animation: pulseGlowGreen 3s infinite ease-in-out;
+}
+
+.animate-blink-live {
+  animation: blinkLive 1.4s infinite ease-in-out;
+}
+
+.animate-blink-live-green {
+  animation: blinkLiveGreen 1.6s infinite ease-in-out;
+}
+
+.cyber-glitch-active {
+  animation: glitchFlicker 0.45s ease-in-out;
+}
+
+/* Subtle CRT scanline overlay */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}

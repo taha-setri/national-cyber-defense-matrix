@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Cybersecurity Platform Architecture Blueprint",
+  "description": "Enterprise architectural blueprint, engineering specifications, and security hardening workbench for a production-ready cybersecurity platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
